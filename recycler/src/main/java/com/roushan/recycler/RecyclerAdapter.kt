@@ -25,7 +25,7 @@ class RecyclerAdapter(val list: List<Any>, val resid: Int, val callback: Recycle
 
     inner class RecyclerHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun onBind(position: Int) {
-            callback.onAction(view, dlist.get(position),position)
+            callback.onAction(view, dlist.get(position), position)
         }
     }
 
@@ -46,6 +46,6 @@ class RecyclerAdapter(val list: List<Any>, val resid: Int, val callback: Recycle
 
 public interface RecyclerAction {
     fun onAction(
-        view: View, any: Any,position:Int
+        view: View, any: Any, position: Int
     )
 }
