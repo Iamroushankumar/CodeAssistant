@@ -1,6 +1,7 @@
 package com.roushan.recycler
 
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,10 @@ class SpinnerAdapter(val list: List<Any>, val resid: Int, val callback: SpinnerA
         return v
     }
 
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        return super.getDropDownView(position, convertView, parent)
+    }
+
     override fun getItem(p0: Int): Any {
         return list[p0]
     }
@@ -52,11 +57,11 @@ public interface SpinnerAction {
     )
 }
 
-public interface ChooseAction {
+interface ChooseAction {
     fun onChooseAction(any: Any?, position: Int)
 }
 
-public fun AppCompatSpinner.choosenItem(
+fun AppCompatSpinner.choosenItem(
     isNeglateFirstPosition: Boolean,
     spinnerlist: List<Any>,
 
@@ -86,4 +91,11 @@ public fun AppCompatSpinner.choosenItem(
         }
 
     }
+
+
+}
+
+@SuppressLint("ClickableViewAccessibility")
+fun AppCompatSpinner.hideSpinnerDropDown() {
+    this.setOnTouchListener(View.OnTouchListener { view, motionEvent -> true })
 }
